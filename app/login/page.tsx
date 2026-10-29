@@ -1,0 +1,7 @@
+"use client";
+import { GitBranch, ArrowUpRight, Sparkles } from "lucide-react";
+import Link from "next/link";
+
+export default function LoginPage() {
+  return <main className="auth-page"><div className="auth-art"><div className="auth-logo"><div className="brand-mark">M</div><span>MEET NOTES ARENA</span></div><div className="auth-quote"><div className="eyebrow light"><span className="eyebrow-line" /> THE TEAM KNOWLEDGE GAME</div><h1>Good notes<br />deserve a <em>spotlight.</em></h1><p>Turn meeting notes into a shared memory — and a little friendly competition.</p><div className="auth-sparkle"><Sparkles size={20} /> Season 04 · Autumn ’24</div></div><div className="auth-art-foot">BUILT FOR TEAMS WHO CARE ABOUT THE DETAILS <span>✳</span></div></div><div className="auth-panel"><div className="auth-panel-top"><span>ALREADY A PLAYER?</span><Link href="/">Back to arena <ArrowUpRight size={14} /></Link></div><div className="auth-card"><div className="auth-card-kicker">WELCOME TO THE ARENA</div><h2>Your next great<br /><em>note starts here.</em></h2><p>Sign in with your GitHub account to join meets, submit notes, and climb the board.</p><button className="github-button" onClick={() => window.location.href = "/"}>  <GitBranch size={19} /> Continue with GitHub</button><div className="auth-terms">By continuing, you agree to play fair and share knowledge.<br />Your GitHub identity is never shown without your permission.</div></div></div></main>;
+}

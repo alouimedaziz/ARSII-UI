@@ -1,0 +1,10 @@
+"use client";
+import { ArrowLeft, CalendarDays, Check, Clock3, FileText, Plus, UploadCloud } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { AppShell, PageHeading } from "@/components/app-shell";
+import { RankList } from "@/components/rank-list";
+import { UploadModal } from "@/components/upload-modal";
+import { meets, checks } from "@/lib/data";
+
+export default function MeetDetailPage() { const [open, setOpen] = useState(false); const meet = meets[0]; return <AppShell eyebrow="MEET DETAIL"><Link href="/meets" className="back-link"><ArrowLeft size={15} /> All meets</Link><PageHeading kicker={`${meet.tag} · LIVE NOW`} title={meet.title} description="Bring the signal out of the noise. Make this meeting count." action={<button className="primary-button" onClick={() => setOpen(true)}><UploadCloud size={17} /> Submit your note</button>} /><div className="detail-grid"><div><div className="detail-meta"><span><CalendarDays size={15} /> {meet.date}</span><span className="deadline-hot"><Clock3 size={15} /> {meet.deadline}</span><span><FileText size={15} /> {meet.entries} submissions</span></div><section className="content-card agenda-card"><div className="card-kicker">MEETING AGENDA</div><h2>What are we solving?</h2><div className="agenda-list">{meet.agenda.map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong><Check size={16} /></div>)}</div></section><section className="content-card score-guide"><div className="card-kicker">HOW NOTES ARE SCORED</div><h2>Make it useful.</h2><div className="checks-grid">{checks.map((check) => <div key={check.label}><div className="check-icon"><Check size={14} /></div><strong>{check.label}</strong><span>{check.detail}</span><b>+{check.points}</b></div>)}</div></section></div><section><div className="section-heading"><div><h2>Live ranking</h2><p>Updates as notes are scored.</p></div></div><RankList compact /></section></div><UploadModal open={open} onClose={() => setOpen(false)} /></AppShell>; }
